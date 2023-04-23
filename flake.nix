@@ -48,6 +48,22 @@
           ];
 
           programs.nix-ld.enable = true;
+          environment.variables.NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
+            pkgs.stdenv.cc.cc
+          ];
+          environment.variables.NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+          # Enable them after upgrading to nixos 23.05
+          # programs.nix-ld.libraries = with pkgs; [
+          #   stdenv.cc.cc
+          #   zlib
+          #   fuse3
+          #   icu
+          #   nss
+          #   openssl
+          #   curl
+          #   expat
+          #   # ...
+          # ];
 
           programs.git.enable = true;
 
@@ -64,18 +80,6 @@
             eval "$(direnv hook bash)"
           '';
 
-          # Enable them after upgrading to nixos 23.05
-          # programs.nix-ld.libraries = with pkgs; [
-          #   stdenv.cc.cc
-          #   zlib
-          #   fuse3
-          #   icu
-          #   nss
-          #   openssl
-          #   curl
-          #   expat
-          #   # ...
-          # ];
         })
       ];
     };
