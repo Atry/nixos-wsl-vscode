@@ -51,10 +51,9 @@
 
           programs.git.enable = true;
 
-          nix.settings = {
-            keep-outputs = true;
-            keep-derivations = true;
-          };
+          # Required settings for direnv
+          nix.settings.keep-outputs = true;
+          nix.settings.keep-derivations = true;
           environment.pathsToLink = [
             "/share/nix-direnv"
           ];
