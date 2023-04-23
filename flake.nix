@@ -7,7 +7,7 @@
     nixosConfigurations.nixosWslVsCode = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ({ pkgs, ... }: {
+        ({ pkgs, lib, ... }: {
           imports = [ nixos-wsl.nixosModules.wsl ];
 
           wsl = {
@@ -43,11 +43,27 @@
             wget
             cachix
             python310Packages.poetry
+            direnv
+            nix-direnv
           ];
 
           programs.nix-ld.enable = true;
 
           programs.git.enable = true;
+
+          nix.settings = {
+            keep-outputs = true;
+            keep-derivations = true;
+          };
+          environment.pathsToLink = [
+            "/share/nix-direnv"
+          ];
+          nixpkgs.overlays = [
+            (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
+          ];
+          programs.bash.interactiveShellInit = lib.mkAfter ''
+            eval "$(direnv hook bash)"
+          '';
 
           # Enable them after upgrading to nixos 23.05
           # programs.nix-ld.libraries = with pkgs; [
