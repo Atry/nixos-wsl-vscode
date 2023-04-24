@@ -47,13 +47,8 @@
           environment.systemPackages = with pkgs; [
             wget
             cachix
-            poetry
             direnv
             nix-direnv
-            gcc
-            gnumake
-            pkg-config
-            cudatoolkit
           ];
 
           nixpkgs.config.allowUnfree = true;
