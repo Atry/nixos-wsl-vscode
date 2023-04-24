@@ -24,6 +24,11 @@
 
           };
 
+          hardware.opengl.package = pkgs.symlinkJoin {
+            name = "wsl";
+            paths = [ /usr/lib/wsl ];
+          };
+
           # Enable nix flakes
           nix.package = pkgs.nixFlakes;
           nix.extraOptions = ''
@@ -42,10 +47,16 @@
           environment.systemPackages = with pkgs; [
             wget
             cachix
-            python310Packages.poetry
+            poetry
             direnv
             nix-direnv
+            gcc
+            gnumake
+            pkg-config
+            cudatoolkit
           ];
+
+          nixpkgs.config.allowUnfree = true;
 
           programs.nix-ld.enable = true;
           environment.variables.NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
