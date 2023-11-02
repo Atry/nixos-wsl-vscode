@@ -1,13 +1,12 @@
 {
-  inputs.nixos-wsl.url = "github:nix-community/NixOS-WSL";
-  inputs.nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-
+  inputs = {
+    nixos-wsl.url = "github:Atry/NixOS-WSL/vscode";
+  };
   outputs = { nixos-wsl, nixpkgs, ... }: {
-    nixosConfigurations.nixosWslVsCode = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixosWslVsCode = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules = [
-        ({ pkgs, lib, ... }: {
+        ({ pkgs, lib, config, ... }: {
           imports = [ nixos-wsl.nixosModules.wsl ];
 
           wsl = {
@@ -15,6 +14,7 @@
             wslConf.automount.root = "/mnt";
             defaultUser = "nixos";
             startMenuLaunchers = true;
+            vscodeRemoteWslExtensionWorkaround.enable = true;
 
             # Enable native Docker support
             # docker-native.enable = true;
@@ -35,6 +35,7 @@
             experimental-features = nix-command flakes
             extra-sandbox-paths = /usr/lib/wsl
           '';
+          nix.settings.trusted-users = [ "nixos" ];
           nix.settings.extra-substituters = [
             "https://nix-community.cachix.org"
           ];
@@ -42,49 +43,20 @@
             "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
           ];
 
+          nix.optimise.automatic = true;
+
           system.stateVersion = "22.05";
 
           environment.systemPackages = with pkgs; [
             wget
             cachix
-            direnv
-            nix-direnv
           ];
 
           nixpkgs.config.allowUnfree = true;
 
-          programs.nix-ld.enable = true;
-          environment.variables.NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
-            pkgs.stdenv.cc.cc
-          ];
-          environment.variables.NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
-          # Enable them after upgrading to nixos 23.05
-          # programs.nix-ld.libraries = with pkgs; [
-          #   stdenv.cc.cc
-          #   zlib
-          #   fuse3
-          #   icu
-          #   nss
-          #   openssl
-          #   curl
-          #   expat
-          #   # ...
-          # ];
-
           programs.git.enable = true;
 
-          # Required settings for direnv
-          nix.settings.keep-outputs = true;
-          nix.settings.keep-derivations = true;
-          environment.pathsToLink = [
-            "/share/nix-direnv"
-          ];
-          nixpkgs.overlays = [
-            (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
-          ];
-          programs.bash.interactiveShellInit = lib.mkAfter ''
-            eval "$(direnv hook bash)"
-          '';
+          programs.direnv.enable = true;
 
         })
       ];
