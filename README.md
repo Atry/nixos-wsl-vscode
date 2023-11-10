@@ -17,7 +17,7 @@ Switch to a local work directory this configuration:
 sudo nixos-rebuild --impure --flake .#nixosWslVsCode switch
 ```
 
-#### As a NixOS module
+#### As a NixOS module in your flake
 
 ```nix
 {
@@ -28,10 +28,21 @@ sudo nixos-rebuild --impure --flake .#nixosWslVsCode switch
       modules = [
         nixos-wsl-vscode.nixosModules.vscode
         ({ config, pkgs, ... }: {
-          # Your other configurations here...
+          # rest of your configuration
         })
       ];
     };
   };
+}
+```
+#### As a NixOS module in your `configuration.nix`
+
+```
+{ config, pkgs, ... }:{
+  imports = [
+    (builtins.getFlake "github:Atry/nixos-wsl-vscode").nixosModules.vscode
+  ];
+
+  # rest of your configuration
 }
 ```
