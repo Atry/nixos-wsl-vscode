@@ -3,6 +3,8 @@ A nixos configuration that works with VS Code
 
 ## Usage:
 
+### As a NixOS configuration
+
 Switch to the `main` branch of this configuration:
 
 ```
@@ -13,4 +15,23 @@ Switch to a local work directory this configuration:
 
 ```
 sudo nixos-rebuild --impure --flake .#nixosWslVsCode switch
+```
+
+#### As a NixOS module
+
+```nix
+{
+  inputs.nixos-wsl-vscode.url = "github:Atry/nixos-wsl-vscode";
+
+  outputs = { self, nixpkgs, vscode-server }: {
+    nixosConfigurations.yourhostname = nixpkgs.lib.nixosSystem {
+      modules = [
+        nixos-wsl-vscode.nixosModules.vscode
+        ({ config, pkgs, ... }: {
+          # Your other configurations here...
+        })
+      ];
+    };
+  };
+}
 ```
