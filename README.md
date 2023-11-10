@@ -3,21 +3,7 @@ A nixos configuration that works with VS Code
 
 ## Usage:
 
-### As a NixOS configuration
-
-Switch to the `main` branch of this configuration:
-
-```
-sudo nixos-rebuild --impure --flake github:Atry/nixos-wsl-vscode#nixosWslVsCode switch
-```
-
-Switch to a local work directory this configuration:
-
-```
-sudo nixos-rebuild --impure --flake .#nixosWslVsCode switch
-```
-
-#### As a NixOS module in your flake
+### As a NixOS module in your flake
 
 ```nix
 {
@@ -35,7 +21,7 @@ sudo nixos-rebuild --impure --flake .#nixosWslVsCode switch
   };
 }
 ```
-#### As a NixOS module in your `configuration.nix`
+### As a NixOS module in your `configuration.nix`
 
 ```
 { config, pkgs, ... }:{
@@ -46,3 +32,20 @@ sudo nixos-rebuild --impure --flake .#nixosWslVsCode switch
   # rest of your configuration
 }
 ```
+
+
+### As a NixOS configuration
+
+Switch to the `main` branch of this configuration:
+
+```
+sudo nixos-rebuild --impure --flake github:Atry/nixos-wsl-vscode#nixosWslVsCode switch
+```
+
+Switch to a local work directory this configuration:
+
+```
+sudo nixos-rebuild --impure --flake .#nixosWslVsCode switch
+```
+
+Note that this NixOS configuration also includes [other optionated settings](https://github.com/Atry/nixos-wsl-vscode/blob/5d1b74b6b39cd9eb26d62e2ffa90ceaa38278352/flake.nix#L35-L82).
