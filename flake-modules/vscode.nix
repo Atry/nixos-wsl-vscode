@@ -7,6 +7,13 @@
       { src = "${pkgs.coreutils}/bin/dirname"; }
       { src = "${pkgs.coreutils}/bin/readlink"; }
       { src = "${pkgs.coreutils}/bin/uname"; }
+      { src = "${pkgs.coreutils}/bin/rm"; }
+      { src = "${pkgs.coreutils}/bin/wc"; }
+      { src = "${pkgs.coreutils}/bin/date"; }
+      { src = "${pkgs.coreutils}/bin/mv"; }
+      { src = "${pkgs.coreutils}/bin/sleep"; }
+      { src = "${pkgs.gnutar}/bin/tar"; }
+      { src = "${pkgs.gzip}/bin/gzip"; }
     ];
     programs.nix-ld = {
       enable = true;
