@@ -1,6 +1,9 @@
 { inputs, lib, ... }: {
   flake.nixosModules.vscode = { config, pkgs, ... }: {
-    imports = [ inputs.nixos-wsl.nixosModules.wsl ];
+    imports = [
+      inputs.nixos-wsl.nixosModules.wsl
+      inputs.nix-ml-ops.nixosModules.nixLd
+    ];
 
     wsl.extraBin = [
       # Required by VS Code's Remote WSL extension
@@ -15,16 +18,6 @@
       { src = "${pkgs.gnutar}/bin/tar"; }
       { src = "${pkgs.gzip}/bin/gzip"; }
     ];
-    programs.nix-ld = {
-      enable = true;
-      libraries = [
-        # Required by NodeJS installed by VS Code's Remote WSL extension
-        pkgs.stdenv.cc.cc
-      ];
-
-      # Use `nix-ld-rs` instead of `nix-ld`, because VS Code's Remote WSL extension launches a non-login non-interactive shell, which is not supported by `nix-ld`, while `nix-ld-rs` works in non-login non-interactive shells.
-      package = inputs.nix-ld-rs.packages.${pkgs.system}.nix-ld-rs;
-    };
   };
 
 }

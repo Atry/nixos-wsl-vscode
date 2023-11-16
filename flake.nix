@@ -11,10 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/NixOS-WSL";
     };
-    nix-ld-rs = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/nix-ld-rs";
-    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
     imports =
