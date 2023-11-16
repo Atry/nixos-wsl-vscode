@@ -38,13 +38,13 @@ A nixos configuration that works with VS Code
 
 Switch to the `main` branch of this configuration:
 
-```
+```sh
 sudo nixos-rebuild --flake github:Atry/nixos-wsl-vscode#nixosWslVsCode switch
 ```
 
 Switch to a local work directory this configuration:
 
-```
+```sh
 sudo nixos-rebuild --flake .#nixosWslVsCode switch
 ```
 
