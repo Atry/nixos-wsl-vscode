@@ -9,7 +9,7 @@ A nixos configuration that works with VS Code
 {
   inputs.nixos-wsl-vscode.url = "github:Atry/nixos-wsl-vscode";
 
-  outputs = { self, nixpkgs, vscode-server }: {
+  outputs = { self, nixpkgs, nixos-wsl-vscode }: {
     nixosConfigurations.yourhostname = nixpkgs.lib.nixosSystem {
       modules = [
         nixos-wsl-vscode.nixosModules.vscodeServerWsl
