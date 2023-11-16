@@ -639,11 +639,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1700113278,
-        "narHash": "sha256-eO9hdK23Xmt+rhM/EisReEnukg9N8XgVN4TfB2blfhc=",
+        "lastModified": 1700114547,
+        "narHash": "sha256-bLvwYqkXncHz0kqT9g8Yp3CAAbCpBMVzKiJbrDpZdTM=",
         "owner": "Atry",
         "repo": "NixOS-WSL",
-        "rev": "5ae59f923329500d7574aa89e3abeffe51e96018",
+        "rev": "3093559c75f6bb3a870a591427ad70152876f471",
         "type": "github"
       },
       "original": {
