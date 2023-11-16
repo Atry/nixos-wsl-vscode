@@ -12,7 +12,7 @@ A nixos configuration that works with VS Code
   outputs = { self, nixpkgs, vscode-server }: {
     nixosConfigurations.yourhostname = nixpkgs.lib.nixosSystem {
       modules = [
-        nixos-wsl-vscode.nixosModules.vscode
+        nixos-wsl-vscode.nixosModules.vscodeServerWsl
         ({ config, pkgs, ... }: {
           # rest of your configuration
         })
@@ -26,7 +26,7 @@ A nixos configuration that works with VS Code
 ```nix
 { config, pkgs, ... }: {
   imports = [
-    (builtins.getFlake "github:Atry/nixos-wsl-vscode").nixosModules.vscode
+    (builtins.getFlake "github:Atry/nixos-wsl-vscode").nixosModules.vscodeServerWsl
   ];
 
   # rest of your configuration
