@@ -9,7 +9,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/NixOS-WSL";
+      url = "github:Atry/NixOS-WSL/patch-2";
+      # TODO: switch to official NixOS-WSL once https://github.com/nix-community/NixOS-WSL/pull/339 gets merged
+      # url = "github:nix-community/NixOS-WSL";
     };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
@@ -39,18 +41,15 @@
               wslConf.automount.root = "/mnt";
               defaultUser = "nixos";
               startMenuLaunchers = true;
+              useWslLib = true;
             };
 
-            hardware.opengl.package = pkgs.symlinkJoin {
-              name = "wsl";
-              paths = [ /usr/lib/wsl ];
-            };
+            hardware.opengl.setLdLibraryPath = true;
 
             # Enable nix flakes
             nix.package = pkgs.nixFlakes;
             nix.extraOptions = ''
               experimental-features = nix-command flakes
-              extra-sandbox-paths = /usr/lib/wsl
             '';
             nix.settings.trusted-users = [ "nixos" ];
             nix.settings.extra-substituters = [
