@@ -15,6 +15,7 @@
       { src = "${pkgs.coreutils}/bin/date"; }
       { src = "${pkgs.coreutils}/bin/mv"; }
       { src = "${pkgs.coreutils}/bin/sleep"; }
+      { src = "${pkgs.coreutils}/bin/mkdir"; }
       { src = "${pkgs.gnutar}/bin/tar"; }
       { src = "${pkgs.gzip}/bin/gzip"; }
     ];
