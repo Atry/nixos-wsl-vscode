@@ -30,12 +30,9 @@
       nixosConfigurations.nixosWslVsCode = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ({ lib, pkgs, ... }: {
-            imports = [
-              inputs.nixos-wsl.nixosModules.wsl
-              flake.config.nixosModules.vscode
-            ];
-
+          inputs.nixos-wsl.nixosModules.wsl
+          flake.config.nixosModules.vscode
+          ({ lib, pkgs, config, ... }: {
             wsl = {
               enable = true;
               wslConf.automount.root = "/mnt";
@@ -51,7 +48,7 @@
             nix.extraOptions = ''
               experimental-features = nix-command flakes
             '';
-            nix.settings.trusted-users = [ "nixos" ];
+            nix.settings.trusted-users = [ config.wsl.defaultUser ];
             nix.settings.extra-substituters = [
               "https://nix-community.cachix.org"
             ];
