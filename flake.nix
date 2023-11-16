@@ -62,9 +62,8 @@
 
             system.stateVersion = "22.05";
 
-            environment.systemPackages = with pkgs; [
-              wget
-              cachix
+            environment.defaultPackages = [
+              pkgs.cachix
             ];
 
             nixpkgs.config.allowUnfree = true;

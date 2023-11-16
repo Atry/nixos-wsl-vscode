@@ -11,16 +11,9 @@
         (lib.attrsets.mapAttrs (userName: userConfig: {
           home.stateVersion = "23.11";
           home.file.".vscode-server/server-env-setup".text = ''
-            export PATH=$PATH:${
-              lib.strings.makeBinPath [
-                pkgs.coreutils
-                pkgs.gnutar
-                pkgs.gzip
-                pkgs.wget
-                pkgs.gnused
-                pkgs.gawk
-              ]
-            }
+            . ${lib.escapeShellArg config.system.build.setEnvironment}
+            export PATH=$PATH:${lib.strings.makeBinPath [ pkgs.wget ]}
+            export EDITOR="code --wait"
           '';
         }))
       ];
