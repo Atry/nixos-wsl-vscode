@@ -3,22 +3,27 @@
     imports = [
       inputs.nixos-wsl.nixosModules.wsl
       inputs.nix-ml-ops.nixosModules.nixLd
+      inputs.home-manager.nixosModules.home-manager
     ];
-
-    wsl.extraBin = [
-      # Required by VS Code's Remote WSL extension
-      { src = "${pkgs.coreutils}/bin/dirname"; }
-      { src = "${pkgs.coreutils}/bin/readlink"; }
-      { src = "${pkgs.coreutils}/bin/uname"; }
-      { src = "${pkgs.coreutils}/bin/rm"; }
-      { src = "${pkgs.coreutils}/bin/wc"; }
-      { src = "${pkgs.coreutils}/bin/date"; }
-      { src = "${pkgs.coreutils}/bin/mv"; }
-      { src = "${pkgs.coreutils}/bin/sleep"; }
-      { src = "${pkgs.coreutils}/bin/mkdir"; }
-      { src = "${pkgs.gnutar}/bin/tar"; }
-      { src = "${pkgs.gzip}/bin/gzip"; }
-    ];
+    home-manager.users =
+      lib.trivial.pipe config.users.users [
+        (lib.attrsets.filterAttrs (_: userConfig: userConfig.isNormalUser))
+        (lib.attrsets.mapAttrs (userName: userConfig: {
+          home.stateVersion = "23.11";
+          home.file.".vscode-server/server-env-setup".text = ''
+            export PATH=$PATH:${
+              lib.strings.makeBinPath [
+                pkgs.coreutils
+                pkgs.gnutar
+                pkgs.gzip
+                pkgs.wget
+                pkgs.gnused
+                pkgs.gawk
+              ]
+            }
+          '';
+        }))
+      ];
   };
 
 }

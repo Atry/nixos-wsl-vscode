@@ -13,6 +13,10 @@
       # TODO: switch to official NixOS-WSL once https://github.com/nix-community/NixOS-WSL/pull/339 gets merged
       # url = "github:nix-community/NixOS-WSL";
     };
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
     imports =
