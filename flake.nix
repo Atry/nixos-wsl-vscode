@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Preemo-Inc/nix-ml-ops";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Atry/NixOS-WSL/patch-2";
@@ -42,7 +42,7 @@
               wslConf.automount.root = "/mnt";
               defaultUser = "nixos";
               startMenuLaunchers = true;
-              useWslLib = true;
+              useWindowsDriver = true;
             };
 
             hardware.opengl.setLdLibraryPath = true;
@@ -59,6 +59,9 @@
               "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
             ];
             nix.settings.auto-optimise-store = true;
+            nix.settings.extra-sandbox-paths = lib.mkIf config.wsl.useWindowsDriver [
+              "/usr/lib/wsl"
+            ];
 
             system.stateVersion = "22.05";
 
