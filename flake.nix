@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Preemo-Inc/nix-ml-ops";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Atry/NixOS-WSL/patch-2";

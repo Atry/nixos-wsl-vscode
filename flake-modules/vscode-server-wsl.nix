@@ -1,4 +1,7 @@
 topLevel@{ inputs, lib, ... }: {
+  imports = [
+    ./vscode-server.nix
+  ];
   flake.nixosModules.vscodeServerWsl = nixosModule: {
     imports = [
       inputs.nixos-wsl.nixosModules.wsl
