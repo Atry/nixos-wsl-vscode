@@ -9,9 +9,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:Atry/NixOS-WSL/patch-2";
-      # TODO: switch to official NixOS-WSL once https://github.com/nix-community/NixOS-WSL/pull/339 gets merged
-      # url = "github:nix-community/NixOS-WSL";
+      url = "github:nix-community/NixOS-WSL";
     };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
