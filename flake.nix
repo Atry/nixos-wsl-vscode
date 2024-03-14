@@ -33,7 +33,7 @@
         system = "x86_64-linux";
         modules = [
           inputs.nixos-wsl.nixosModules.wsl
-          flake.config.nixosModules.vscodeServerWsl
+          flake.config.nixosModules.vscodeServerWslTunnels
           ({ lib, pkgs, config, ... }: {
             wsl = {
               enable = true;
