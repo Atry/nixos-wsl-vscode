@@ -4,7 +4,7 @@
     nix-ml-ops = {
       inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:Preemo-Inc/nix-ml-ops";
+      url = "github:Atry/nix-ml-ops";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
