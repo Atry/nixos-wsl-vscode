@@ -47,7 +47,7 @@
 
             # Enable nix flakes
             nix.extraOptions = ''
-              experimental-features = nix-command flakes
+              experimental-features = nix-command flakes impure-derivations ca-derivations
             '';
             nix.settings.trusted-users = [ config.wsl.defaultUser ];
             nix.settings.extra-substituters = [
