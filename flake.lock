@@ -452,11 +452,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1710385324,
-        "narHash": "sha256-/6FsyxJVUXEjffeFVFgr5NKBq5TQO2urc8Kj4nqRWY8=",
+        "lastModified": 1710788036,
+        "narHash": "sha256-3FUDLPDTLl2XC/G4AmGSrfc4sIK7WU4RoNPOwSAS5BI=",
         "owner": "Atry",
         "repo": "nix-ml-ops",
-        "rev": "1f8b2badeec1f75c08910fb531ad33d44c56920c",
+        "rev": "11b0ce3d0771bf12bf04434f90d416d22a59237e",
         "type": "github"
       },
       "original": {
