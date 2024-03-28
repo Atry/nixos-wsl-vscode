@@ -42,6 +42,18 @@
               startMenuLaunchers = true;
               useWindowsDriver = true;
             };
+            virtualisation = {
+              docker = {
+                enable = true;
+                enableOnBoot = true;
+                autoPrune.enable = true;
+              };
+              podman = {
+                enable = true;
+              };
+              containers.cdi.dynamic.nvidia.enable = true;
+            };
+            users.extraGroups.docker.members = config.users.groups.wheel.members;
 
             hardware.opengl.setLdLibraryPath = true;
 
