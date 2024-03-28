@@ -49,7 +49,8 @@
             nix.extraOptions = ''
               experimental-features = nix-command flakes impure-derivations ca-derivations
             '';
-            nix.settings.trusted-users = [ config.wsl.defaultUser ];
+            nix.settings.trusted-users = [ "@wheel" ];
+
             nix.settings.extra-substituters = [
               "https://nix-community.cachix.org"
             ];
