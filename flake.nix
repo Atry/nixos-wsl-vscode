@@ -15,6 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
     imports =
@@ -33,6 +37,7 @@
         system = "x86_64-linux";
         modules = [
           inputs.nixos-wsl.nixosModules.wsl
+          inputs.nix-index-database.nixosModules.nix-index
           flake.config.nixosModules.vscodeServerWslTunnels
           ({ lib, pkgs, config, ... }: {
             wsl = {
@@ -88,6 +93,9 @@
 
             programs.direnv.enable = true;
 
+            programs.command-not-found.enable = false;
+            programs.nix-index.enable = true;
+            programs.nix-index-database.comma.enable = true;
           })
         ];
       };
