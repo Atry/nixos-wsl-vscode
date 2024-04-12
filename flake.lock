@@ -27,15 +27,16 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1700068135,
-        "narHash": "sha256-MN/NqiEjCg3UeFAJ7Uz7t5LyBwRsUEolBwA1DrdSC5w=",
-        "owner": "Preemo-Inc",
+        "lastModified": 1712101228,
+        "narHash": "sha256-4LQfsKTl4UA+mQ9O+4jJ9K7qvCBBhEIVH6lNshFq6Vo=",
+        "owner": "Atry",
         "repo": "devenv",
-        "rev": "804f935a71811ece03ea489a4253593838900ae1",
+        "rev": "42b5726802a32e7fd6c52d82b7f4fe88d6c1fd10",
         "type": "github"
       },
       "original": {
-        "owner": "Preemo-Inc",
+        "owner": "Atry",
+        "ref": "nix-ml-ops",
         "repo": "devenv",
         "type": "github"
       }
@@ -472,11 +473,11 @@
         "systems": "systems_6"
       },
       "locked": {
-        "lastModified": 1710788036,
-        "narHash": "sha256-3FUDLPDTLl2XC/G4AmGSrfc4sIK7WU4RoNPOwSAS5BI=",
+        "lastModified": 1712639516,
+        "narHash": "sha256-w2t8d5h4f9IE76FkrFzsbNTb6/jPD88LIbViOmPmpl4=",
         "owner": "Atry",
         "repo": "nix-ml-ops",
-        "rev": "11b0ce3d0771bf12bf04434f90d416d22a59237e",
+        "rev": "783aec5b26eb635775593a79b25d25f7c0a8113e",
         "type": "github"
       },
       "original": {
@@ -494,11 +495,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1697285352,
-        "narHash": "sha256-tRGLm/DO8+anGUCgLYxTF5EPqWv8EZ9MVFWRdh285HU=",
+        "lastModified": 1711883218,
+        "narHash": "sha256-XKHhQJ0tk/S/LbYJb31VVvZKWdb+uCFnvEuUQZJkP9o=",
         "owner": "nlewo",
         "repo": "nix2container",
-        "rev": "9d7f33ef0058f4df4c0912025f43c758a3289d76",
+        "rev": "2154ad0459abfa258edaab038b4716f474656e99",
         "type": "github"
       },
       "original": {
@@ -817,15 +818,16 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1708589824,
-        "narHash": "sha256-2GOiFTkvs5MtVF65sC78KNVxQSmsxtk0WmV1wJ9V2ck=",
-        "owner": "nix-community",
+        "lastModified": 1712424287,
+        "narHash": "sha256-6rh8ytPhLjFcbkCCypE2ras3W/lFnkWwXW++xpqEqAU=",
+        "owner": "Atry",
         "repo": "poetry2nix",
-        "rev": "3c92540611f42d3fb2d0d084a6c694cd6544b609",
+        "rev": "fa856d3bd3d47982690166c8ebf04bd728ffdacb",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "Atry",
+        "ref": "jupyter-existing-provisioner-vllm",
         "repo": "poetry2nix",
         "type": "github"
       }
