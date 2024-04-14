@@ -62,6 +62,8 @@
 
             hardware.opengl.setLdLibraryPath = true;
 
+            nix.package = pkgs.nixUnstable;
+
             # Enable nix flakes
             nix.extraOptions = ''
               experimental-features = nix-command flakes impure-derivations ca-derivations
