@@ -56,10 +56,10 @@
               podman = {
                 enable = true;
               };
-              containers.cdi.dynamic.nvidia.enable = true;
             };
             users.extraGroups.docker.members = config.users.groups.wheel.members;
 
+            hardware.nvidia-container-toolkit.enable = true;
             hardware.opengl.setLdLibraryPath = true;
 
             nix.package = pkgs.nixUnstable;
