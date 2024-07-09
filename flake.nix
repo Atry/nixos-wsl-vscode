@@ -87,6 +87,7 @@
 
             environment.defaultPackages = [
               pkgs.cachix
+              pkgs.wsl-open
             ];
 
             nixpkgs.config.allowUnfree = true;
