@@ -61,7 +61,7 @@
 
             hardware.nvidia-container-toolkit.enable = true;
 
-            nix.package = pkgs.nixUnstable;
+            nix.package = pkgs.nixVersions.latest;
 
             # Enable nix flakes
             nix.extraOptions = ''
