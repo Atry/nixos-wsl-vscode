@@ -33,6 +33,9 @@ A nixos configuration that works with VS Code in WSL
 }
 ```
 
+### To use "Remote - Tunnels" extension
+
+If you want to use VS Code's [Remote - Tunnels](https://marketplace.visualstudio.com/items?itemName=ms-vscode.remote-server) extension to access WSL2 from another computer, extra workarounds are needed. To apply the workarounds, replace previous examples' `nixosModules.vscodeServerWsl` with `nixosModules.vscodeServerWslTunnels`. The NixOS module `vscodeServerWslTunnels` would create extra symlinks under your WSL 2's `/bin` path.
 
 ### As a NixOS configuration
 
