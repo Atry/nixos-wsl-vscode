@@ -1059,15 +1059,15 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1754678211,
-        "owner": "Atry",
+        "lastModified": 1754498491,
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fe337d40dea6515b9b25c3bf844898993f02b48c",
+        "rev": "c2ae88e026f9525daf89587f3cbee584b92b6134",
         "type": "github"
       },
       "original": {
-        "owner": "Atry",
-        "ref": "ld-audit-search-mod",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }

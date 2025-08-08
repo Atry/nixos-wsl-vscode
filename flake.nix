@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Atry/nix-ml-ops";
     };
-    nixpkgs.url = "github:Atry/nixpkgs/ld-audit-search-mod";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/NixOS-WSL";
