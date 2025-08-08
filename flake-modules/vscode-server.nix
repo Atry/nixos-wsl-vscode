@@ -1,7 +1,6 @@
 { inputs, lib, ... }: {
   flake.nixosModules.vscodeServer = nixosModule@{ pkgs, ... }: {
     imports = [
-      inputs.nix-ml-ops.nixosModules.nixLd
       inputs.home-manager.nixosModules.home-manager
     ];
     options.vscodeServer = {
@@ -38,9 +37,7 @@
         ];
       };
 
-      programs.nix-ld.libraries = [
-        pkgs.zlib
-      ];
+      programs.ld-audit-search-mod.enable = true;
     };
   };
 
