@@ -1,12 +1,14 @@
 {
   inputs = {
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    devenv-root = {
+      url = "file+file:///dev/null";
+      flake = false;
+    };
     nix-ml-ops = {
-      inputs.flake-parts.follows = "flake-parts";
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Atry/nix-ml-ops";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:Atry/nixpkgs/ld-audit-search-mod";
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/NixOS-WSL";
@@ -20,7 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
+  outputs = inputs: inputs.nix-ml-ops.inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
     imports =
       lib.trivial.pipe ./flake-modules [
         builtins.readDir

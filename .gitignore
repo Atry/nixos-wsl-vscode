@@ -6,3 +6,8 @@
 
 # nixago: ignore-linked-files
 /.vscode/extensions.json
+.direnv/
+.devenv/
+.envrc.private
+result
+.pre-commit-config.yaml
